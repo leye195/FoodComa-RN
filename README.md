@@ -13,6 +13,7 @@ React Native with Apollo, (Expo 활용)
 - [ ] Profile
 - [ ] Detail
 - [ ] Map
+- [ ] Review (upload Review)
 
 ### ToDo
 
