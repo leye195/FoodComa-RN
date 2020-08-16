@@ -6,7 +6,7 @@ React Native with Apollo, (Expo 활용)
 
 ### Screens
 
-- [ ] SiguUp/SignIn
+- [x] SiguUp/SignIn
 - [ ] Home
 - [ ] Search
 - [ ] Foods
