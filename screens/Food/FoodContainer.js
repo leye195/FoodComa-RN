@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import FoodPresenter from "./FoodPresenter";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-import { GET_FOODS, GET_CATEGORIES } from "../../query";
+import { GET_FOODS, GET_CATEGORIES } from "../../graqhql/query";
 
 const FoodContainer = () => {
   const [selected, setSelected] = useState({ idx: 0, type: "all" });

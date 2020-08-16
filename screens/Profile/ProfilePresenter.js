@@ -80,6 +80,7 @@ const ProfilePresenter = ({
   handleSelect,
   isVisible,
   toggleModal,
+  handleLogout,
 }) => {
   return (
     <Container>
@@ -107,7 +108,11 @@ const ProfilePresenter = ({
         </CategoryWrapper>
       </ButtonContainer>
       <ContentSection></ContentSection>
-      <UserModal isVisible={isVisible} toggleModal={toggleModal} />
+      <UserModal
+        isVisible={isVisible}
+        toggleModal={toggleModal}
+        handleLogout={handleLogout}
+      />
     </Container>
   );
 };

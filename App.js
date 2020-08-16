@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Image, StatusBar } from "react-native";
+import { Provider } from "react-redux";
 import { ApolloProvider } from "@apollo/react-hooks";
 import client from "./apollo";
+import store from "./store";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
@@ -28,6 +30,7 @@ const cacheImages = (images) =>
 const cacheFonts = (fonts) => fonts.map((font) => Font.loadAsync(font));
 export default function App() {
   const [isReady, setIsReady] = useState(false);
+  const [loggedIn, setIsLoggedIn] = useState(false);
   const loadAssets = () => {
     const images = cacheImages([
       require("./assets/splash.png"),
@@ -45,12 +48,15 @@ export default function App() {
   const handleFinish = () => {
     setIsReady(true);
   };
+
   return isReady ? (
     <ApolloProvider client={client}>
-      <StatusBar barStyle="white-content" />
-      <NavigationContainer>
-        <Stack />
-      </NavigationContainer>
+      <Provider store={store}>
+        <StatusBar barStyle="white-content" />
+        <NavigationContainer>
+          <Stack />
+        </NavigationContainer>
+      </Provider>
     </ApolloProvider>
   ) : (
     <AppLoading startAsync={loadAssets} onFinish={handleFinish} />

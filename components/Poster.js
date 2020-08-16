@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getImage } from "../api";
+import { getImage } from "../utils";
 import { GREY_COLOR } from "../constants/color";
 
 const Container = styled.View`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
 import * as Location from "expo-location";
 import { useQuery } from "@apollo/react-hooks";
-import { GET_FOODS } from "../../query";
+import { GET_FOODS, CURRENT_USER } from "../../graqhql/query";
 
 const HomeContainer = ({ navigation }) => {
   const [coords, setCoords] = useState({});
@@ -12,6 +12,9 @@ const HomeContainer = ({ navigation }) => {
   const { loading, error, data } = useQuery(GET_FOODS, {
     variables: { typeName: "all" },
   });
+  const { loading: userLoading, error: userError, data: userData } = useQuery(
+    CURRENT_USER
+  );
   const loadLocation = async () => {
     const { status } = await Location.requestPermissionsAsync();
     if (status !== "granted") {
@@ -45,7 +48,7 @@ const HomeContainer = ({ navigation }) => {
       latitude,
       address,
     } = content;
-    console.log(content);
+    //console.log(content);
     navigation.navigate("Detail", {
       id: _id,
       name,

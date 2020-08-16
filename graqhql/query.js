@@ -1,4 +1,15 @@
 import { gql } from "apollo-boost";
+
+export const CURRENT_USER = gql`
+  query currentUser {
+    currentUser {
+      _id
+      email
+      image
+    }
+  }
+`;
+
 export const GET_FOODS = gql`
   query getFoods($typeName: String!) {
     foods(type: $typeName) {

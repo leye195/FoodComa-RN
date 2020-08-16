@@ -99,6 +99,7 @@ const LoginPresenter = ({
   onChangePasswordAgain,
   handleLogin,
   handleSignUp,
+
 }) => {
   return (
     <ImageBackground

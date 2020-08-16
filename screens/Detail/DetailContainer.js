@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import DetailPresenter from "./DetailPresenter";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-import { GET_FOOD } from "../../query";
+import { GET_FOOD } from "../../graqhql/query";
 
 const DetailContainer = ({ route: { params } }) => {
   const [data, setData] = useState({

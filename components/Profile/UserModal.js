@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-native-modal";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("screen");
 
@@ -33,7 +34,7 @@ const Text = styled.Text`
   font-size: 20px;
   font-weight: 500;
 `;
-const UserModal = ({ isVisible, toggleModal }) => {
+const UserModal = ({ isVisible, toggleModal, handleLogout }) => {
   return (
     <Container>
       <Modal
@@ -58,7 +59,7 @@ const UserModal = ({ isVisible, toggleModal }) => {
           <ModalButton>
             <Text>정보 수정</Text>
           </ModalButton>
-          <ModalButton>
+          <ModalButton onPress={() => handleLogout()}>
             <Text>로그아웃</Text>
           </ModalButton>
           <ModalButton onPress={() => toggleModal()}>

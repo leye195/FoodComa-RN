@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getImage } from "../api";
+import { getImage } from "../utils";
 const Container = styled.View`
   width: 100%;
   height: 100%;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Rate from "./Rate";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getImage } from "../api";
+import { getImage } from "../utils";
 import { useNavigation } from "@react-navigation/native";
 import { GREY_COLOR } from "../constants/color";
 

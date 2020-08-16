@@ -7,8 +7,7 @@ import ReviewScreen from "../screens/Review";
 import LoginScreen from "../screens/Login";
 import Tabs from "./TabNavigation";
 import { ACTIVE_COLOR } from "../constants/color";
-import { Ionicons } from "@expo/vector-icons";
-import HeaderMore from "../components/Profile/HeaderMore";
+
 const Stack = createStackNavigator();
 export default () => (
   <Stack.Navigator
@@ -21,6 +20,7 @@ export default () => (
       headerBackTitleVisible: false,
       headerTintColor: "white",
     }}
+    sc
   >
     <Stack.Screen
       name="Login"
