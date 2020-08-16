@@ -61,7 +61,7 @@ const LoginContainer = () => {
           signUp: { success, user },
         } = data;
         if (success) {
-          handleChangeLoginState(true, user.token);
+          handleChangeLoginState(true, user.token, user._id);
           alert("가입 성공");
           navigation.replace("FoodComa");
         } else {

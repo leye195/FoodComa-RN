@@ -9,12 +9,32 @@ const Container = styled.View`
   background-color: ${GREY_COLOR};
   margin-bottom: 10px;
 `;
-const Image = styled.Image``;
-
-const UserImage = () => {
+const Image = styled.Image`
+  height: 100%;
+  width: 100%;
+  border-radius: 50px;
+`;
+const DefaultImage = styled.View`
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+`;
+const Text = styled.Text`
+  font-weight: bold;
+  font-size: 20px;
+`;
+const UserImage = ({ image, email }) => {
   return (
     <Container>
-      <Image />
+      {image ? (
+        <Image />
+      ) : (
+        <DefaultImage>
+          <Text>{email.split("@")[0][0]}</Text>
+        </DefaultImage>
+      )}
     </Container>
   );
 };

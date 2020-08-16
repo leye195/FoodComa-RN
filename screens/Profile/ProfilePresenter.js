@@ -7,6 +7,8 @@ import { DARK_YELLOW, ACTIVE_COLOR, GREY_COLOR } from "../../constants/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import UserModal from "../../components/Profile/UserModal";
 import HeaderMore from "../../components/Profile/HeaderMore";
+import ReviewList from "../../components/Profile/ReviewList";
+import FoodList from "../../components/Profile/FoodList";
 const { height } = Dimensions.get("screen");
 const Container = styled.View``;
 const Header = styled.View`
@@ -81,6 +83,9 @@ const ProfilePresenter = ({
   isVisible,
   toggleModal,
   handleLogout,
+  user,
+  like,
+  reviews,
 }) => {
   return (
     <Container>
@@ -89,8 +94,8 @@ const ProfilePresenter = ({
         <HeaderMore toggleModal={toggleModal} />
       </Header>
       <UserSection>
-        <UserImage />
-        <Text>User Name</Text>
+        <UserImage image={user.image} email={user.email} />
+        <Text>{user.email}</Text>
       </UserSection>
       <ButtonContainer>
         <CategoryWrapper selected={selected === 0}>
@@ -107,7 +112,10 @@ const ProfilePresenter = ({
           </TouchableOpacity>
         </CategoryWrapper>
       </ButtonContainer>
-      <ContentSection></ContentSection>
+      <ContentSection>
+        {selected === 0 && <ReviewList reviews={reviews} />}
+        {selected === 1 && <FoodList foods={like} />}
+      </ContentSection>
       <UserModal
         isVisible={isVisible}
         toggleModal={toggleModal}

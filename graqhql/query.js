@@ -74,3 +74,19 @@ export const GET_SEARCH = gql`
     }
   }
 `;
+
+export const USER_REVIEWS_AND_LIKE = gql`
+  query userReviewsAndLike($uid: ID!) {
+    userReviews(uid: $uid) {
+      _id
+      content
+      rate
+    }
+    like(uid: $uid) {
+      _id
+      name
+      imgUrl
+      avg_rate
+    }
+  }
+`;
