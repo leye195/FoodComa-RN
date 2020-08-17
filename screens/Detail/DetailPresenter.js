@@ -95,7 +95,7 @@ const ReviewSection = styled.View`
 `;
 
 const DetailPresenter = ({ loading, data, getData }) => {
-  console.log(data);
+  //console.log(data);
   return (
     <DetailScroll getData={getData}>
       <Container>

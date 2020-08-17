@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GREY_COLOR } from "../../constants/color";
+import { getImage } from "../../utils";
 
 const Container = styled.View`
   border-radius: 50px;
@@ -29,10 +30,10 @@ const UserImage = ({ image, email }) => {
   return (
     <Container>
       {image ? (
-        <Image />
+        <Image source={{ uri: getImage(image) }} />
       ) : (
         <DefaultImage>
-          <Text>{email.split("@")[0][0]}</Text>
+          <Text>{email && email.split("@")[0][0]}</Text>
         </DefaultImage>
       )}
     </Container>

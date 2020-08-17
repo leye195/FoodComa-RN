@@ -1,7 +1,14 @@
 import AsyncStorage from "@react-native-community/async-storage";
-
+import * as firebase from "firebase";
 const AUTH_TOKEN = "AUTH_TOKEN";
 let token;
+
+export const uploadToFirebase = async (blob, filename) => {
+  const ref = firebase.storage().ref().child(`/images/${filename}`);
+  const snapshot = await ref.put(blob);
+  let url = await snapshot.ref.getDownloadURL();
+  return url;
+};
 
 export const getToken = async () => {
   try {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-native-modal";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ const Text = styled.Text`
   font-size: 20px;
   font-weight: 500;
 `;
-const UserModal = ({ isVisible, toggleModal, handleLogout }) => {
+const UserModal = ({ isVisible, toggleModal, handleLogout, pickImage }) => {
   return (
     <Container>
       <Modal
@@ -56,8 +56,8 @@ const UserModal = ({ isVisible, toggleModal, handleLogout }) => {
         }}
       >
         <ItemContainer>
-          <ModalButton>
-            <Text>정보 수정</Text>
+          <ModalButton onPress={pickImage}>
+            <Text>프로필 이미지 수정</Text>
           </ModalButton>
           <ModalButton onPress={() => handleLogout()}>
             <Text>로그아웃</Text>

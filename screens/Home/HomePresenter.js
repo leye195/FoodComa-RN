@@ -5,7 +5,6 @@ import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { DARK_YELLOW } from "../../constants/color";
 import Section from "../../components/Section";
 import HorizontalScroll from "../../components/HorizontalScroll";
-import { foods } from "../../mock/data";
 import Scroll from "../../components/Scroll";
 import Poster from "../../components/Poster";
 import { Bounce } from "react-native-animated-spinkit";

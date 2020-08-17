@@ -25,3 +25,9 @@ export const SIGNIN_BY_EMAIL = gql`
     }
   }
 `;
+
+export const UPLOAD_PROFILE = gql`
+  mutation uploadProfileImage($id: ID!, $file: String!) {
+    uploadProfileImage(id: $id, file: $file)
+  }
+`;

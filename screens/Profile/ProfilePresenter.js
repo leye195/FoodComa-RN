@@ -83,9 +83,11 @@ const ProfilePresenter = ({
   isVisible,
   toggleModal,
   handleLogout,
+  pickImage,
   user,
   like,
   reviews,
+  image,
 }) => {
   return (
     <Container>
@@ -94,8 +96,11 @@ const ProfilePresenter = ({
         <HeaderMore toggleModal={toggleModal} />
       </Header>
       <UserSection>
-        <UserImage image={user.image} email={user.email} />
-        <Text>{user.email}</Text>
+        <UserImage
+          image={image === null && user ? user.image : image}
+          email={user && user.email}
+        />
+        <Text>{user && user.email}</Text>
       </UserSection>
       <ButtonContainer>
         <CategoryWrapper selected={selected === 0}>
@@ -120,6 +125,7 @@ const ProfilePresenter = ({
         isVisible={isVisible}
         toggleModal={toggleModal}
         handleLogout={handleLogout}
+        pickImage={pickImage}
       />
     </Container>
   );

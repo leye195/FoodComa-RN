@@ -42,6 +42,11 @@ export const GET_FOOD = gql`
       avg_rate
       reviews {
         _id
+        writer {
+          email
+        }
+        content
+        rate
       }
     }
   }
