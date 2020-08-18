@@ -13,13 +13,8 @@ const LoginContainer = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const [
-    signInEmail,
-    { loading: signInEmailLoading, data: signInEmailData, error },
-  ] = useMutation(SIGNIN_BY_EMAIL);
-  const [signUp, { loading: signUpLoading, data: signUpData }] = useMutation(
-    SIGNUP
-  );
+  const [signInEmail] = useMutation(SIGNIN_BY_EMAIL);
+  const [signUp] = useMutation(SIGNUP);
   const handleSelect = (idx) => {
     if (idx === 0) {
       setEmail("");
@@ -37,10 +32,13 @@ const LoginContainer = () => {
     else {
       signInEmail({ variables: { email, password } }).then(({ data }) => {
         const {
-          signInEmail: { success, user },
+          signInEmail: {
+            success,
+            user: { token },
+          },
         } = data;
         if (success) {
-          handleChangeLoginState(true, user.token);
+          handleChangeLoginState({ loggedIn: true, token });
           navigation.replace("FoodComa");
         } else alert("로그인에 실패헸습니다");
       });
@@ -58,10 +56,13 @@ const LoginContainer = () => {
     } else {
       signUp({ variables: { email, password } }).then(({ data }) => {
         const {
-          signUp: { success, user },
+          signUp: {
+            success,
+            user: { token },
+          },
         } = data;
         if (success) {
-          handleChangeLoginState(true, user.token, user._id);
+          handleChangeLoginState({ loggedIn: true, token });
           alert("가입 성공");
           navigation.replace("FoodComa");
         } else {
@@ -79,7 +80,7 @@ const LoginContainer = () => {
   const onChangePasswordAgain = (text) => {
     setPasswordAgain(text);
   };
-  const handleChangeLoginState = (loggedIn = false, token) => {
+  const handleChangeLoginState = ({ token, loggedIn = false }) => {
     dispatch(changeLoginStatus({ loggedIn }));
     if (loggedIn) {
       signIn(token);

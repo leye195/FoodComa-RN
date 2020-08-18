@@ -53,8 +53,11 @@ const Button = styled.Text`
 const ReviewPresenter = ({
   foodId,
   foodName,
+  content,
   starCount,
   onStarRatingPress,
+  onSubmitReview,
+  onChangeReview,
 }) => {
   return (
     <KeyboardAvoidingView behavior="padding">
@@ -74,15 +77,17 @@ const ReviewPresenter = ({
           </RateSection>
           <TextAreaSection>
             <TextArea
+              value={content}
               placeholder={"방문 리뷰"}
               multiline
               numberOfLines={4}
               maxLength={500}
               editable
+              onChangeText={(text) => onChangeReview(text)}
             />
           </TextAreaSection>
           <ButtonContainer>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onSubmitReview}>
               <Button>제출</Button>
             </TouchableOpacity>
           </ButtonContainer>

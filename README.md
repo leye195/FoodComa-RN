@@ -20,5 +20,5 @@ React Native with Apollo, (Expo 활용)
 - [ ] UI 작업
 - [x] gql 쿼리 작성, Apollo Server 연결
 - [x] 로그인/가입/로그아웃/유저 프로필 이미지 업로드 구현
-- [ ] 리뷰 작성/수정/삭제, 좋아요 구현
+- [ ] 리뷰 작성/수정/삭제, 좋아요/취소 구현
 - [ ] Map 뷰 marking 작업

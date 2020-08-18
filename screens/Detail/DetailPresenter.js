@@ -10,9 +10,10 @@ import Scroll from "../../components/Scroll";
 import IconButton from "../../components/IconButton";
 import Map from "../../components/Detail/Map";
 import Empty from "../../components/Review/Empty";
+import ReviewList from "../../components/Detail/ReviewList";
 const DetailScroll = styled(Scroll)``;
 const Container = styled.View`
-  padding-bottom: 100px;
+  padding-bottom: 10px;
 `;
 const HeadSection = styled.View`
   box-shadow: 1px 1px 5px #e3e3e3;
@@ -94,8 +95,14 @@ const ReviewSection = styled.View`
   margin: 60px 0px;
 `;
 
-const DetailPresenter = ({ loading, data, getData }) => {
-  //console.log(data);
+const DetailPresenter = ({
+  loading,
+  data,
+  getData,
+  onPressLike,
+  onPressReview,
+  isLiked,
+}) => {
   return (
     <DetailScroll getData={getData}>
       <Container>
@@ -125,14 +132,23 @@ const DetailPresenter = ({ loading, data, getData }) => {
               </InfoContainer>
             </HeadSection>
             <ContentSection>
-              <IconButton title={"좋아요"} id={data.id}>
+              <IconButton
+                title={"좋아요"}
+                id={data.id}
+                onPressButton={onPressLike}
+              >
                 <MaterialIcons
-                  name={"favorite-border"}
+                  name={isLiked ? "favorite" : "favorite-border"}
                   size={30}
-                  color={"black"}
+                  color={isLiked ? "pink" : "black"}
                 />
               </IconButton>
-              <IconButton title={"평가 하기"} id={data._id} name={data.name}>
+              <IconButton
+                title={"평가 하기"}
+                id={data.id}
+                name={data.name}
+                onPressButton={onPressReview}
+              >
                 <MaterialIcons name={"rate-review"} size={30} />
               </IconButton>
             </ContentSection>
@@ -153,11 +169,13 @@ const DetailPresenter = ({ loading, data, getData }) => {
               <TitleContainer>
                 <MaterialIcons name={"rate-review"} size={20} />
                 <SubTitle>
-                  방문 평가 ({data.reviews && data.reviews.length})
+                  {data.name} 리뷰 ({data.reviews && data.reviews.length})
                 </SubTitle>
               </TitleContainer>
-              {data.reviews && data.reviews.length === 0 && (
+              {data.reviews && data.reviews.length === 0 ? (
                 <Empty text={"리뷰가 없습니다."} />
+              ) : (
+                <ReviewList reviews={(data && data.reviews) || []} />
               )}
             </ReviewSection>
           </>

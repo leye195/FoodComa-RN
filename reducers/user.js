@@ -3,9 +3,11 @@ import { handleActions, createAction } from "redux-actions";
 export const LOGIN = "LOGIN";
 export const SIGNUP = "SIGNUP";
 export const CHECK_USER = "CHECK_USER";
+export const REVIEW = "REVIEW";
 
 export const changeLoginStatus = createAction(LOGIN);
 export const checkUser = createAction(CHECK_USER);
+export const checkReview = createAction(REVIEW);
 
 const initState = {
   loggedIn: false,
@@ -14,6 +16,7 @@ const initState = {
     email: "",
     image: null,
   },
+  isReviewSubmitted: false,
 };
 
 export default handleActions(
@@ -39,6 +42,13 @@ export default handleActions(
           email: payload.email,
           image: payload.image,
         },
+      };
+    },
+    [REVIEW]: (state, action) => {
+      const { payload } = action;
+      return {
+        ...state,
+        isReviewSubmitted: payload.flag,
       };
     },
   },

@@ -26,6 +26,18 @@ export const SIGNIN_BY_EMAIL = gql`
   }
 `;
 
+export const SUBMIT_REVIEW = gql`
+  mutation submitReview($uid: ID!, $fid: ID!, $content: String!, $rate: Int!) {
+    submitReview(uid: $uid, fid: $fid, content: $content, rate: $rate)
+  }
+`;
+
+export const LIKE_FOOD = gql`
+  mutation likeFood($uid: ID!, $fid: ID!) {
+    likeFood(uid: $uid, fid: $fid)
+  }
+`;
+
 export const UPLOAD_PROFILE = gql`
   mutation uploadProfileImage($id: ID!, $file: String!) {
     uploadProfileImage(id: $id, file: $file)

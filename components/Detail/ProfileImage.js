@@ -1,12 +1,14 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import styled from "styled-components";
 import { GREY_COLOR } from "../../constants/color";
 import { getImage } from "../../utils";
+const { height, width } = Dimensions.get("screen");
 
 const Container = styled.View`
   border-radius: 50px;
-  width: 100px;
-  height: 100px;
+  width: ${width * 0.1}px;
+  height: ${width * 0.1}px;
   background-color: ${GREY_COLOR};
   margin-bottom: 10px;
 `;
@@ -15,7 +17,6 @@ const Image = styled.Image`
   width: 100%;
   border-radius: 50px;
 `;
-
 const DefaultImage = styled.View`
   height: 100%;
   width: 100%;
@@ -25,9 +26,10 @@ const DefaultImage = styled.View`
 `;
 const Text = styled.Text`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 12px;
 `;
-const UserImage = ({ image, email }) => {
+
+const ProfileImage = ({ image, email }) => {
   return (
     <Container>
       {image ? (
@@ -40,4 +42,4 @@ const UserImage = ({ image, email }) => {
     </Container>
   );
 };
-export default UserImage;
+export default ProfileImage;

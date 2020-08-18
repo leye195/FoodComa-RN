@@ -57,15 +57,17 @@ const ProfileContainer = () => {
         Permissions.CAMERA
       );
       if (status === "granted") {
-        let pickResult = await ImagePicker.launchImageLibraryAsync({
+        let {
+          cancelled,
+          uri: pickedUri,
+        } = await ImagePicker.launchImageLibraryAsync({
           allowsEditing: true,
         });
-        if (!pickResult.cancelled) {
+        if (!cancelled) {
           const uri =
             Platform.OS === "ios"
-              ? pickResult.uri.replace("file://", "")
-              : pickResult.uri;
-          const type = pickResult.type;
+              ? pickedUri.replace("file://", "")
+              : pickedUri;
           setImage(uri);
           uploadFile(uri);
         }
@@ -76,9 +78,10 @@ const ProfileContainer = () => {
   };
 
   useEffect(() => {
-    if (user && user._id) {
+    const { _id } = user;
+    if (_id) {
       getUserReviewsAndLike({
-        variables: { uid: user._id },
+        variables: { uid: _id },
       });
     }
   }, []);

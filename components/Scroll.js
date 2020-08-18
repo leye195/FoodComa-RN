@@ -4,9 +4,14 @@ import { ScrollView, RefreshControl } from "react-native";
 const Scroll = ({ children, getData }) => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
-    setRefreshing(true);
-    await getData();
-    setRefreshing(false);
+    try {
+      setRefreshing(true);
+      await getData();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setRefreshing(false);
+    }
   };
   return (
     <ScrollView

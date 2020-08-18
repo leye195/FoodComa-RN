@@ -44,9 +44,14 @@ export const GET_FOOD = gql`
         _id
         writer {
           email
+          image
         }
         content
         rate
+        imgUrl
+      }
+      like {
+        _id
       }
     }
   }
