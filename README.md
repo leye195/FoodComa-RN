@@ -9,11 +9,11 @@ React Native with Apollo, (Expo 활용)
 - [x] SiguUp/SignIn
 - [ ] Home
 - [ ] Search
-- [ ] Foods
+- [x] Foods
 - [ ] Profile
-- [ ] Detail
+- [x] Detail
 - [ ] Map
-- [ ] Review (upload Review)
+- [x] Review (upload Review)
 
 ### ToDo
 
