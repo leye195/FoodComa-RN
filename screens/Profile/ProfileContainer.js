@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLoginStatus } from "../../reducers/user";
 import { signOut, uploadToFirebase } from "../../utils";
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { USER_REVIEWS_AND_LIKE } from "../../graqhql/query";
 import { Platform } from "react-native";
 import { UPLOAD_PROFILE } from "../../graqhql/mutation";
@@ -17,9 +17,13 @@ const ProfileContainer = () => {
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const [getUserReviewsAndLike, { data: itemData }] = useLazyQuery(
-    USER_REVIEWS_AND_LIKE
-  );
+  const {
+    data: itemData,
+    loading: itemLoading,
+    refetch: itemRefetch,
+  } = useQuery(USER_REVIEWS_AND_LIKE, {
+    variables: { uid: user._id },
+  });
   const [uploadProfileImage] = useMutation(UPLOAD_PROFILE);
   const handleSelect = (idx) => {
     setSelected(idx);
@@ -76,15 +80,6 @@ const ProfileContainer = () => {
       console.log(e);
     }
   };
-
-  useEffect(() => {
-    const { _id } = user;
-    if (_id) {
-      getUserReviewsAndLike({
-        variables: { uid: _id },
-      });
-    }
-  }, []);
   return (
     <ProfilePresenter
       isVisible={isVisible}
@@ -97,6 +92,8 @@ const ProfileContainer = () => {
       user={user}
       like={(itemData && itemData.like) || []}
       reviews={(itemData && itemData.userReviews) || []}
+      refetch={itemRefetch}
+      loading={itemLoading}
     />
   );
 };

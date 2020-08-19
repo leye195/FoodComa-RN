@@ -9,6 +9,8 @@ import UserModal from "../../components/Profile/UserModal";
 import HeaderMore from "../../components/Profile/HeaderMore";
 import ReviewList from "../../components/Profile/ReviewList";
 import FoodList from "../../components/Profile/FoodList";
+import Loading from "../../components/Loading";
+
 const { height } = Dimensions.get("screen");
 const Container = styled.View``;
 const Header = styled.View`
@@ -75,8 +77,13 @@ const Category = styled.Text`
           color: ${ACTIVE_COLOR};
         `}
 `;
-const ContentSection = styled.View``;
-
+const ContentSection = styled.View`
+  padding-bottom: 300px;
+  padding-top: 10px;
+`;
+const ContentScroll = styled(Scroll)`
+  margin-top: 10px;
+`;
 const ProfilePresenter = ({
   selected,
   handleSelect,
@@ -88,7 +95,10 @@ const ProfilePresenter = ({
   like,
   reviews,
   image,
+  refetch,
+  loading,
 }) => {
+  //console.lot(loading);
   return (
     <Container>
       <Header>
@@ -117,10 +127,13 @@ const ProfilePresenter = ({
           </TouchableOpacity>
         </CategoryWrapper>
       </ButtonContainer>
-      <ContentSection>
-        {selected === 0 && <ReviewList reviews={reviews} />}
-        {selected === 1 && <FoodList foods={like} />}
-      </ContentSection>
+      <ContentScroll getData={refetch}>
+        <ContentSection>
+          {loading && <Loading />}
+          {!loading && selected === 0 && <ReviewList reviews={reviews} />}
+          {!loading && selected === 1 && <FoodList foods={like} />}
+        </ContentSection>
+      </ContentScroll>
       <UserModal
         isVisible={isVisible}
         toggleModal={toggleModal}

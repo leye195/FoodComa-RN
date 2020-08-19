@@ -91,12 +91,35 @@ export const USER_REVIEWS_AND_LIKE = gql`
       _id
       content
       rate
+      writer {
+        email
+        image
+      }
     }
     like(uid: $uid) {
       _id
       name
       imgUrl
       avg_rate
+    }
+  }
+`;
+
+export const SEARCH_FOOD = gql`
+  query searchFood($keyword: String!) {
+    searchFood(keyword: $keyword) {
+      _id
+      name
+      type
+      imgUrl
+      longitude
+      latitude
+      address
+      rate
+      avg_rate
+      like {
+        _id
+      }
     }
   }
 `;
