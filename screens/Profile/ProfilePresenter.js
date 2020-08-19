@@ -10,10 +10,11 @@ import HeaderMore from "../../components/Profile/HeaderMore";
 import ReviewList from "../../components/Profile/ReviewList";
 import FoodList from "../../components/Profile/FoodList";
 import Loading from "../../components/Loading";
+import Header from "../../components/Header";
 
 const { height } = Dimensions.get("screen");
 const Container = styled.View``;
-const Header = styled.View`
+/*const Header = styled.View`
   width: 100%;
   background-color: ${ACTIVE_COLOR};
   height: 60px;
@@ -26,7 +27,7 @@ const HeaderText = styled.Text`
   color: white;
   font-size: 20px;
   margin-top: 20px;
-`;
+`;*/
 const UserSection = styled.View`
   display: flex;
   align-items: center;
@@ -101,8 +102,7 @@ const ProfilePresenter = ({
   //console.lot(loading);
   return (
     <Container>
-      <Header>
-        <HeaderText>Me</HeaderText>
+      <Header text={"내 프로필"}>
         <HeaderMore toggleModal={toggleModal} />
       </Header>
       <UserSection>

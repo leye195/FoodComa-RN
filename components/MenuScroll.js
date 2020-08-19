@@ -15,7 +15,7 @@ const Menu = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 8px;
   border-radius: 10px;
   ${(props) =>
     props.active &&

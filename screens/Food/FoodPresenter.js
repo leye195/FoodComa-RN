@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "../../components/Card";
 import Scroll from "../../components/Scroll";
 import MenuScroll from "../../components/MenuScroll";
+import Header from "../../components/Header";
 const Container = styled.View`
   display: flex;
 `;
@@ -26,6 +27,7 @@ const FoodPresenter = ({
 }) => {
   return (
     <Container>
+      <Header text={selected.type === "all" ? "전체" : selected.type} />
       <MenuScroll
         handleSelect={handleSelect}
         selected={selected}

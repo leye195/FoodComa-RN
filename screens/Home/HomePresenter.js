@@ -9,6 +9,7 @@ import Scroll from "../../components/Scroll";
 import Poster from "../../components/Poster";
 import { Bounce } from "react-native-animated-spinkit";
 import ImageSection from "../../components/Home/ImageSection";
+import Header from "../../components/Header";
 
 const Container = styled.View`
   ${(props) =>
@@ -70,77 +71,92 @@ const HomePresenter = ({
       <Bounce size={45} />
     </Container>
   ) : (
-    <Scroll>
-      <Container>
-        <LocationContainer>
-          <TouchableOpacity onPress={moveToMap}>
-            <Location>
-              {locationLoading ? (
-                <MaterialCommunityIcons name="loading" size={20} />
-              ) : (
-                <LocationText>
-                  {location.region} {location.city} {location.street}
-                </LocationText>
-              )}
-              <FontAwesome5 name="location-arrow" size={20} color="white" />
-            </Location>
-          </TouchableOpacity>
-        </LocationContainer>
-        <ImageSection></ImageSection>
-        <Section title={"맛있는 한식?"}>
-          <HorizontalScroll>
-            {data &&
-              data.foods
-                .filter((food) => food.type.includes("한식"))
-                .map((content) => (
-                  <Card key={content._id} onPress={() => moveToDetail(content)}>
-                    <Poster url={content.imgUrl[0]} />
-                    <Title>{content.name}</Title>
-                  </Card>
-                ))}
-          </HorizontalScroll>
-        </Section>
-        <Section title={"아니면 일식?"}>
-          <HorizontalScroll>
-            {data &&
-              data.foods
-                .filter((food) => food.type.includes("일식"))
-                .map((content) => (
-                  <Card key={content._id} onPress={() => moveToDetail(content)}>
-                    <Poster url={content.imgUrl[0]} />
-                    <Title>{content.name}</Title>
-                  </Card>
-                ))}
-          </HorizontalScroll>
-        </Section>
-        <Section title={"푸짐한 양식?"}>
-          <HorizontalScroll>
-            {data &&
-              data.foods
-                .filter((food) => food.type.includes("양식"))
-                .map((content) => (
-                  <Card key={content._id} onPress={() => moveToDetail(content)}>
-                    <Poster url={content.imgUrl[0]} />
-                    <Title>{content.name}</Title>
-                  </Card>
-                ))}
-          </HorizontalScroll>
-        </Section>
-        <Section title={"간단하게 햄버거?"}>
-          <HorizontalScroll>
-            {data &&
-              data.foods
-                .filter((food) => food.type.includes("햄버거"))
-                .map((content) => (
-                  <Card key={content._id} onPress={() => moveToDetail(content)}>
-                    <Poster url={content.imgUrl[0]} />
-                    <Title>{content.name}</Title>
-                  </Card>
-                ))}
-          </HorizontalScroll>
-        </Section>
-      </Container>
-    </Scroll>
+    <>
+      <Header text={"FoodComa"} />
+      <Scroll>
+        <Container>
+          <LocationContainer>
+            <TouchableOpacity onPress={moveToMap}>
+              <Location>
+                {locationLoading ? (
+                  <MaterialCommunityIcons name="loading" size={20} />
+                ) : (
+                  <LocationText>
+                    {location.region} {location.city} {location.street}
+                  </LocationText>
+                )}
+                <FontAwesome5 name="location-arrow" size={20} color="white" />
+              </Location>
+            </TouchableOpacity>
+          </LocationContainer>
+          <ImageSection></ImageSection>
+          <Section title={"맛있는 한식?"}>
+            <HorizontalScroll>
+              {data &&
+                data.foods
+                  .filter((food) => food.type.includes("한식"))
+                  .map((content) => (
+                    <Card
+                      key={content._id}
+                      onPress={() => moveToDetail(content)}
+                    >
+                      <Poster url={content.imgUrl[0]} />
+                      <Title>{content.name}</Title>
+                    </Card>
+                  ))}
+            </HorizontalScroll>
+          </Section>
+          <Section title={"아니면 일식?"}>
+            <HorizontalScroll>
+              {data &&
+                data.foods
+                  .filter((food) => food.type.includes("일식"))
+                  .map((content) => (
+                    <Card
+                      key={content._id}
+                      onPress={() => moveToDetail(content)}
+                    >
+                      <Poster url={content.imgUrl[0]} />
+                      <Title>{content.name}</Title>
+                    </Card>
+                  ))}
+            </HorizontalScroll>
+          </Section>
+          <Section title={"푸짐한 양식?"}>
+            <HorizontalScroll>
+              {data &&
+                data.foods
+                  .filter((food) => food.type.includes("양식"))
+                  .map((content) => (
+                    <Card
+                      key={content._id}
+                      onPress={() => moveToDetail(content)}
+                    >
+                      <Poster url={content.imgUrl[0]} />
+                      <Title>{content.name}</Title>
+                    </Card>
+                  ))}
+            </HorizontalScroll>
+          </Section>
+          <Section title={"간단하게 햄버거?"}>
+            <HorizontalScroll>
+              {data &&
+                data.foods
+                  .filter((food) => food.type.includes("햄버거"))
+                  .map((content) => (
+                    <Card
+                      key={content._id}
+                      onPress={() => moveToDetail(content)}
+                    >
+                      <Poster url={content.imgUrl[0]} />
+                      <Title>{content.name}</Title>
+                    </Card>
+                  ))}
+            </HorizontalScroll>
+          </Section>
+        </Container>
+      </Scroll>
+    </>
   );
 };
 export default HomePresenter;

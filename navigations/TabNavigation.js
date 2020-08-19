@@ -41,10 +41,7 @@ export default ({ navigation, route }) => {
     return <></>;
   };
   const getHeaderShown = (state) => {
-    if (state !== undefined) {
-      return state.index === 3 ? false : true;
-    }
-    return true;
+    return false;
   };
   useLayoutEffect(() => {
     navigation.setOptions({

@@ -14,7 +14,6 @@ const HorizontalScroll = ({ children }) => {
         style={{ marginVertical: 20 }}
         contentContainerStyle={{
           flexDirection: "row",
-          paddingLeft: 10,
         }}
       >
         {children}
