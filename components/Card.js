@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Rate from "./Rate";
+import { Animated } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getImage } from "../utils";
 import { useNavigation } from "@react-navigation/native";
@@ -16,6 +17,12 @@ const Container = styled.View`
 const ImageContainer = styled.View`
   height: 55%;
   background: ${GREY_COLOR};
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+`;
+const AnimatedImage = styled(Animated.Image)`
+  width: 100%;
+  height: 100%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 `;
@@ -37,6 +44,13 @@ const Name = styled.Text`
   margin: 10px;
 `;
 const Card = ({ id, name, url, longitude, latitude, address, avg_rate }) => {
+  let imageAnimated = new Animated.Value(0);
+  const onImageLoad = () => {
+    Animated.timing(imageAnimated, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
   const navigation = useNavigation();
   return (
     <Container>
@@ -54,7 +68,11 @@ const Card = ({ id, name, url, longitude, latitude, address, avg_rate }) => {
         }
       >
         <ImageContainer>
-          <Image source={{ uri: getImage(url[0]) }} />
+          <AnimatedImage
+            source={{ uri: getImage(url[0]) }}
+            style={{ opacity: imageAnimated }}
+            onLoad={onImageLoad}
+          />
         </ImageContainer>
         <InfoSection>
           <Name>{name}</Name>

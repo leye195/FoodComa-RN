@@ -35,6 +35,7 @@ export default function App() {
   const loadAssets = () => {
     const images = cacheImages([
       require("./assets/splash.png"),
+      "https://images.unsplash.com/photo-1576488446152-22e9a7ea2f1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80",
       "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
     ]); // preload 할 이미지들

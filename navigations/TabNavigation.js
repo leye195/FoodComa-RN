@@ -13,6 +13,10 @@ import { Platform, Text } from "react-native";
 import { ACTIVE_COLOR, INACTIVE_COLOR, YELLOW_COLOR } from "../constants/color";
 import HeaderMore from "../components/Profile/HeaderMore";
 import UserModal from "../components/Profile/UserModal";
+import {
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native-gesture-handler";
 const Tab = createBottomTabNavigator();
 
 export default ({ navigation, route }) => {
@@ -60,25 +64,31 @@ export default ({ navigation, route }) => {
         activeTintColor: ACTIVE_COLOR,
         inactiveTintColor: INACTIVE_COLOR,
         size: 20,
-        showLabel: false,
+        showLabel: true,
+        labelStyle: {
+          fontSize: 12,
+          marginBottom: 2,
+        },
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="홈"
         id={0}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={Platform.OS === "ios" ? "ios-home" : "md-home"}
-              size={26}
-              color={focused ? ACTIVE_COLOR : INACTIVE_COLOR}
-            />
+            <TouchableOpacity>
+              <Ionicons
+                name={Platform.OS === "ios" ? "ios-home" : "md-home"}
+                size={26}
+                color={focused ? ACTIVE_COLOR : INACTIVE_COLOR}
+              />
+            </TouchableOpacity>
           ),
         }}
       />
       <Tab.Screen
-        name="Food"
+        name="푸드"
         component={FoodScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -91,7 +101,7 @@ export default ({ navigation, route }) => {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="검색"
         component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -104,7 +114,7 @@ export default ({ navigation, route }) => {
         }}
       />
       <Tab.Screen
-        name="Me"
+        name="내 프로필"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (

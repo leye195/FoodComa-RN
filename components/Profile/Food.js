@@ -1,9 +1,10 @@
 import React from "react";
-import { Dimensions } from "react-native";
 import styled from "styled-components";
+import { Dimensions, Animated } from "react-native";
+
 import { GREY_COLOR } from "../../constants/color";
 import { getImage } from "../../utils";
-const { height, width } = Dimensions.get("screen");
+const { height } = Dimensions.get("screen");
 const Container = styled.View`
   padding: 10px;
   margin-bottom: 5px;
@@ -22,19 +23,31 @@ const Content = styled.View`
   height: ${height * 0.3}px;
   border-radius: 10px;
 `;
-const Image = styled.Image`
+const AnimatedImage = styled(Animated.Image)`
   height: 100%;
   width: 100%;
   border-radius: 10px;
 `;
+
 const Food = ({ food: { name, imgUrl } }) => {
+  let imageAnimated = new Animated.Value(0);
+  const onImageLoad = () => {
+    Animated.timing(imageAnimated, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
   return (
     <Container>
       <Header>
         <Text>{name}</Text>
       </Header>
       <Content>
-        <Image source={{ uri: getImage(imgUrl[0]) }} />
+        <AnimatedImage
+          source={{ uri: getImage(imgUrl[0]) }}
+          style={{ opacity: imageAnimated }}
+          onLoad={onImageLoad}
+        />
       </Content>
     </Container>
   );

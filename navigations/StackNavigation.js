@@ -20,7 +20,6 @@ export default () => (
       headerBackTitleVisible: false,
       headerTintColor: "white",
     }}
-    sc
   >
     <Stack.Screen
       name="Login"

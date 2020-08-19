@@ -7,17 +7,17 @@ React Native with Apollo, (Expo 활용)
 ### Screens
 
 - [x] SiguUp/SignIn
-- [ ] Home
+- [x] Home
 - [ ] Search
 - [x] Foods
-- [ ] Profile
+- [x] Profile
 - [x] Detail
 - [ ] Map
 - [x] Review (upload Review)
 
 ### ToDo
 
-- [ ] UI 작업
+- [x] UI 작업
 - [x] gql 쿼리 작성, Apollo Server 연결
 - [x] 로그인/가입/로그아웃/유저 프로필 이미지 업로드 구현
 - [ ] 리뷰 작성/수정/삭제, 좋아요/취소 구현

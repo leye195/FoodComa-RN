@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import SwipeContainer from "../../components/SwipeContainer";
 import Slide from "../../components/Slide";
-import { Bounce } from "react-native-animated-spinkit";
 import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import { ACTIVE_COLOR } from "../../constants/color";
@@ -11,6 +10,7 @@ import IconButton from "../../components/IconButton";
 import Map from "../../components/Detail/Map";
 import Empty from "../../components/Review/Empty";
 import ReviewList from "../../components/Detail/ReviewList";
+import Loading from "../../components/Loading";
 const DetailScroll = styled(Scroll)``;
 const Container = styled.View`
   padding-bottom: 10px;
@@ -107,7 +107,7 @@ const DetailPresenter = ({
     <DetailScroll getData={getData}>
       <Container>
         {loading ? (
-          <Bounce size={45} color={"#fff"} />
+          <Loading />
         ) : (
           <>
             <SwipeContainer>

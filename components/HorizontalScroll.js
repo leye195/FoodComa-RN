@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ScrollView } from "react-native";
 const Container = styled.View`
   background-color: white;
-  box-shadow: 0px 0px 5px #e3e3e3;
+  box-shadow: 0px 5px 3px #e3e3e3;
 `;
 const HorizontalScroll = ({ children }) => {
   return (

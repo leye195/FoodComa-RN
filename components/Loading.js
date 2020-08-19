@@ -8,6 +8,7 @@ const Container = styled.View`
   justify-content: center;
   height: 100%;
   width: 100%;
+  padding-top: 20px;
 `;
 
 const Loading = ({ size = 40, color = "black" }) => {
