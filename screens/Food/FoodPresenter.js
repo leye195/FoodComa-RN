@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import Scroll from "../../components/Scroll";
 import MenuScroll from "../../components/MenuScroll";
 import Header from "../../components/Header";
+import FlatScroll from "../../components/FlatScroll";
 const Container = styled.View`
   display: flex;
 `;
@@ -13,7 +14,7 @@ const FoodSection = styled.View`
   flex-wrap: wrap;
   justify-content: flex-start;
   flex: 1;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
   margin-top: 20px;
   margin-left: 20px;
 `;
@@ -35,19 +36,7 @@ const FoodPresenter = ({
       />
       <FoodScroll getData={getData}>
         <FoodSection>
-          {foods &&
-            foods.map((food) => (
-              <Card
-                key={food._id}
-                id={food._id}
-                name={food.name}
-                url={food.imgUrl}
-                latitude={food.latitude}
-                longitude={food.longitude}
-                address={food.address}
-                avg_rate={food.avg_rate}
-              />
-            ))}
+          {foods && foods.map((food) => <Card key={food._id} item={food} />)}
         </FoodSection>
       </FoodScroll>
     </Container>

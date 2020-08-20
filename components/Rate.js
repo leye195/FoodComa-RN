@@ -6,7 +6,6 @@ import { ACTIVE_COLOR } from "../constants/color";
 const Container = styled.View`
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
 `;
 const Rate = ({ rate }) => {
   const [rateArr, setRateArr] = useState([0, 0, 0, 0, 0]);

@@ -10,6 +10,7 @@ import Poster from "../../components/Poster";
 import { Bounce } from "react-native-animated-spinkit";
 import ImageSection from "../../components/Home/ImageSection";
 import Header from "../../components/Header";
+import Rate from "../../components/Rate";
 
 const Container = styled.View`
   ${(props) =>
@@ -30,42 +31,23 @@ const LocationContainer = styled.View`
   width: 100%;
   margin: 10px 0;
 `;
-const Location = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: ${DARK_YELLOW};
-  padding: 10px 40px;
-  border-radius: 20px;
-  width: 100%;
-  box-shadow: 1px 1px 10px ${GREY_COLOR};
-`;
-const LocationText = styled.Text`
-  color: white;
-  font-weight: 800;
-  margin-right: 5px;
-`;
+
 const Card = styled(TouchableOpacity)`
   background-color: white;
   box-shadow: 5px 5px 5px ${GREY_COLOR};
   border-radius: 10px;
   border: 1px solid ${GREY_COLOR};
+  align-items: center;
+  justify-content: center;
   margin: 5px;
   padding: 5px;
 `;
+const ItemRate = styled(Rate)``;
 const Title = styled.Text`
   text-align: center;
 `;
 
-const HomePresenter = ({
-  navigation,
-  location,
-  locationLoading,
-  moveToMap,
-  moveToDetail,
-  loading,
-  data,
-}) => {
+const HomePresenter = ({ moveToDetail, loading, data, refetch }) => {
   return loading ? (
     <Container type={"loading"}>
       <Bounce size={45} />
@@ -73,22 +55,8 @@ const HomePresenter = ({
   ) : (
     <>
       <Header text={"FoodComa"} />
-      <Scroll>
+      <Scroll getData={refetch}>
         <Container>
-          <LocationContainer>
-            <TouchableOpacity onPress={moveToMap}>
-              <Location>
-                {locationLoading ? (
-                  <MaterialCommunityIcons name="loading" size={20} />
-                ) : (
-                  <LocationText>
-                    {location.region} {location.city} {location.street}
-                  </LocationText>
-                )}
-                <FontAwesome5 name="location-arrow" size={20} color="white" />
-              </Location>
-            </TouchableOpacity>
-          </LocationContainer>
           <ImageSection></ImageSection>
           <Section title={"맛있는 한식?"}>
             <HorizontalScroll>
@@ -102,6 +70,7 @@ const HomePresenter = ({
                     >
                       <Poster url={content.imgUrl[0]} />
                       <Title>{content.name}</Title>
+                      <ItemRate rate={content.avg_rate} />
                     </Card>
                   ))}
             </HorizontalScroll>
@@ -118,6 +87,7 @@ const HomePresenter = ({
                     >
                       <Poster url={content.imgUrl[0]} />
                       <Title>{content.name}</Title>
+                      <ItemRate rate={content.avg_rate} />
                     </Card>
                   ))}
             </HorizontalScroll>
@@ -134,6 +104,7 @@ const HomePresenter = ({
                     >
                       <Poster url={content.imgUrl[0]} />
                       <Title>{content.name}</Title>
+                      <ItemRate rate={content.avg_rate} />
                     </Card>
                   ))}
             </HorizontalScroll>
@@ -150,6 +121,7 @@ const HomePresenter = ({
                     >
                       <Poster url={content.imgUrl[0]} />
                       <Title>{content.name}</Title>
+                      <ItemRate rate={content.avg_rate} />
                     </Card>
                   ))}
             </HorizontalScroll>

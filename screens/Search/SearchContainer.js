@@ -18,6 +18,9 @@ const SearchContainer = ({ navigation }) => {
   const handleSubmit = () => {
     searchFood({ variables: { keyword } });
   };
+  const refetchingData = () => {
+    handleSubmit();
+  };
   return (
     <SearchPresenter
       navigation={navigation}
@@ -26,6 +29,7 @@ const SearchContainer = ({ navigation }) => {
       keyword={keyword}
       result={result}
       loading={loading}
+      refetch={refetchingData}
     />
   );
 };

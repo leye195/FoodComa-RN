@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { GREY_COLOR } from "../../constants/color";
+import { Ionicons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 const TextInput = styled.TextInput`
   background-color: white;
-  width: 90%;
+  width: 80%;
+  height: 60px;
   margin: 5px auto;
-  padding: 10px;
-  border-radius: 20px;
-  box-shadow: 1px 5px 4px #d0d0d0;
+  font-size: 20px;
+  padding: 10px 0px;
 `;
 
 const Input = ({ placeholder, value, onChange, onSubmit }) => (
@@ -18,7 +20,6 @@ const Input = ({ placeholder, value, onChange, onSubmit }) => (
     onChangeText={onChange}
     onSubmitEditing={onSubmit}
     maxLength={20}
-    numberOfLines={1}
     returnKeyType={"search"}
   />
 );

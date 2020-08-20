@@ -4,10 +4,13 @@ import { Dimensions, Animated } from "react-native";
 
 import { GREY_COLOR } from "../../constants/color";
 import { getImage } from "../../utils";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const { height } = Dimensions.get("screen");
 const Container = styled.View`
   padding: 10px;
   margin-bottom: 5px;
+  background-color: white;
 `;
 const Header = styled.View`
   display: flex;
@@ -29,7 +32,10 @@ const AnimatedImage = styled(Animated.Image)`
   border-radius: 10px;
 `;
 
-const Food = ({ food: { name, imgUrl } }) => {
+const Food = ({
+  item: { _id: id, latitude, longitude, name, imgUrl, avg_rate, address },
+}) => {
+  const navigation = useNavigation();
   let imageAnimated = new Animated.Value(0);
   const onImageLoad = () => {
     Animated.timing(imageAnimated, {
@@ -38,18 +44,32 @@ const Food = ({ food: { name, imgUrl } }) => {
     }).start();
   };
   return (
-    <Container>
-      <Header>
-        <Text>{name}</Text>
-      </Header>
-      <Content>
-        <AnimatedImage
-          source={{ uri: getImage(imgUrl[0]) }}
-          style={{ opacity: imageAnimated }}
-          onLoad={onImageLoad}
-        />
-      </Content>
-    </Container>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("Detail", {
+          id,
+          latitude,
+          longitude,
+          name,
+          imgUrl,
+          avg_rate,
+          address,
+        })
+      }
+    >
+      <Container>
+        <Header>
+          <Text>{name}</Text>
+        </Header>
+        <Content>
+          <AnimatedImage
+            source={{ uri: getImage(imgUrl[0]) }}
+            style={{ opacity: imageAnimated }}
+            onLoad={onImageLoad}
+          />
+        </Content>
+      </Container>
+    </TouchableOpacity>
   );
 };
 export default Food;

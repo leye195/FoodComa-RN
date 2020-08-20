@@ -25,7 +25,6 @@ const Section = ({ title, children }) => {
         <TouchableOpacity>
           <Title>{title}</Title>
         </TouchableOpacity>
-        <Line />
       </TextContainer>
       {children}
     </Container>

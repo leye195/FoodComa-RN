@@ -7,7 +7,6 @@ const Cards = styled.View`
   width: 90%;
   margin: 0 auto;
   padding: 5px;
-  background-color: white;
   border-radius: 10px;
 `;
 const FoodList = ({ foods }) => {
@@ -16,7 +15,7 @@ const FoodList = ({ foods }) => {
       {foods.length > 0 ? (
         <Cards>
           {foods.map((food) => (
-            <Food key={food._id} food={food} />
+            <Food key={food._id} item={food} />
           ))}
         </Cards>
       ) : (

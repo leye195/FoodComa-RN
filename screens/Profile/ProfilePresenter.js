@@ -14,20 +14,6 @@ import Header from "../../components/Header";
 
 const { height } = Dimensions.get("screen");
 const Container = styled.View``;
-/*const Header = styled.View`
-  width: 100%;
-  background-color: ${ACTIVE_COLOR};
-  height: 60px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-const HeaderText = styled.Text`
-  font-weight: bold;
-  color: white;
-  font-size: 20px;
-  margin-top: 20px;
-`;*/
 const UserSection = styled.View`
   display: flex;
   align-items: center;

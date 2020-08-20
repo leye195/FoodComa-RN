@@ -43,7 +43,15 @@ const Name = styled.Text`
   font-size: 15px;
   margin: 10px;
 `;
-const Card = ({ id, name, url, longitude, latitude, address, avg_rate }) => {
+const RateView = styled.View`
+  margin-left: 10px;
+`;
+const Card = ({
+  item: { _id: id, name, imgUrl: url, longitude, latitude, address, avg_rate },
+  item,
+}) => {
+  const navigation = useNavigation();
+
   let imageAnimated = new Animated.Value(0);
   const onImageLoad = () => {
     Animated.timing(imageAnimated, {
@@ -51,7 +59,7 @@ const Card = ({ id, name, url, longitude, latitude, address, avg_rate }) => {
       useNativeDriver: true,
     }).start();
   };
-  const navigation = useNavigation();
+  console.log(item);
   return (
     <Container>
       <TouchableOpacity
@@ -76,7 +84,9 @@ const Card = ({ id, name, url, longitude, latitude, address, avg_rate }) => {
         </ImageContainer>
         <InfoSection>
           <Name>{name}</Name>
-          <Rate rate={4.0} />
+          <RateView>
+            <Rate rate={avg_rate} />
+          </RateView>
         </InfoSection>
       </TouchableOpacity>
     </Container>

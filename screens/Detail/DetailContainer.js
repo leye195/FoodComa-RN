@@ -17,7 +17,7 @@ const DetailContainer = ({ route: { params } }) => {
     longitude: params.longitude,
     latitude: params.latitude,
     address: params.address,
-    avg_rate: params.avg_rate,
+    avg_rate: params.avg_rate || 0,
     reviews: [],
   });
   const [isLiked, setIsLiked] = useState(false);
@@ -55,15 +55,16 @@ const DetailContainer = ({ route: { params } }) => {
     }
     if (foodData) {
       const {
-        food: { like, reviews },
+        food: { like, reviews, avg_rate },
       } = foodData;
       const isInclude = like.find((item) => item._id === user._id);
       //console.log(isInclude);
       if (isInclude) setIsLiked(true);
       else setIsLiked(false);
-      setData({ ...data, reviews, like });
+      setData({ ...data, avg_rate, reviews, like });
     }
   }, [foodData, isReviewSubmitted]);
+  console.log();
   return (
     <DetailPresenter
       loading={loading}
