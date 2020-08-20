@@ -39,7 +39,6 @@ const HomeContainer = ({ navigation }) => {
     });
   };
   useEffect(() => {
-    refetch();
     if (userData) {
       const { currentUser } = userData;
       dispatch(
