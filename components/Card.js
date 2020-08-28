@@ -5,7 +5,7 @@ import { Animated } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getImage } from "../utils";
 import { useNavigation } from "@react-navigation/native";
-import { GREY_COLOR } from "../constants/color";
+import { GREY_COLOR, YELLOW_COLOR } from "../constants/color";
 
 const Container = styled.View`
   height: 180px;
@@ -46,9 +46,24 @@ const Name = styled.Text`
 const RateView = styled.View`
   margin-left: 10px;
 `;
+const Type = styled.Text`
+  margin-top: 5px;
+  margin-left: 10px;
+  color: black;
+  font-weight: 500;
+`;
+
 const Card = ({
-  item: { _id: id, name, imgUrl: url, longitude, latitude, address, avg_rate },
-  item,
+  item: {
+    _id: id,
+    name,
+    imgUrl: url,
+    longitude,
+    latitude,
+    address,
+    avg_rate,
+    type,
+  },
 }) => {
   const navigation = useNavigation();
 
@@ -59,7 +74,7 @@ const Card = ({
       useNativeDriver: true,
     }).start();
   };
-  console.log(item);
+  //console.log(item);
   return (
     <Container>
       <TouchableOpacity
@@ -87,6 +102,7 @@ const Card = ({
           <RateView>
             <Rate rate={avg_rate} />
           </RateView>
+          <Type>{type.join("/")}</Type>
         </InfoSection>
       </TouchableOpacity>
     </Container>

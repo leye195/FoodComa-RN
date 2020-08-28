@@ -6,7 +6,7 @@ import UserImage from "../../components/Profile/UserImage";
 import { DARK_YELLOW, ACTIVE_COLOR, GREY_COLOR } from "../../constants/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import UserModal from "../../components/Profile/UserModal";
-import HeaderMore from "../../components/Profile/HeaderMore";
+import MoreButton from "../../components/Profile/MoreButton";
 import ReviewList from "../../components/Profile/ReviewList";
 import FoodList from "../../components/Profile/FoodList";
 import Loading from "../../components/Loading";
@@ -89,7 +89,7 @@ const ProfilePresenter = ({
   return (
     <Container>
       <Header text={"내 프로필"}>
-        <HeaderMore toggleModal={toggleModal} />
+        <MoreButton toggleModal={toggleModal} />
       </Header>
       <UserSection>
         <UserImage

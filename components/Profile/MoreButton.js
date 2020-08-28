@@ -10,17 +10,17 @@ const Container = styled.View`
   padding-top: 20px;
   margin-right: 30px;
 `;
-const HeaderMore = ({ toggleModal }) => {
+const More = ({ toggleModal }) => {
   return (
     <Container>
       <TouchableOpacity onPress={() => toggleModal()}>
         <Ionicons
           name={Platform.OS === "ios" ? "ios-more" : "md-more"}
           color={"white"}
-          size={25}
+          size={20}
         />
       </TouchableOpacity>
     </Container>
   );
 };
-export default HeaderMore;
+export default More;

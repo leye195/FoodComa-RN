@@ -6,6 +6,7 @@ import { GREY_COLOR } from "../../constants/color";
 import { getImage } from "../../utils";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Rate from "../Rate";
 const { height } = Dimensions.get("screen");
 const Container = styled.View`
   padding: 10px;
@@ -31,7 +32,12 @@ const AnimatedImage = styled(Animated.Image)`
   width: 100%;
   border-radius: 10px;
 `;
-
+const RateContainer = styled.View`
+  flex-direction: row;
+`;
+const RateText = styled.Text`
+  margin-left: 5px;
+`;
 const Food = ({
   item: { _id: id, latitude, longitude, name, imgUrl, avg_rate, address },
 }) => {
@@ -60,6 +66,10 @@ const Food = ({
       <Container>
         <Header>
           <Text>{name}</Text>
+          <RateContainer>
+            <Rate rate={avg_rate} />
+            <RateText>{avg_rate.toFixed(2)}</RateText>
+          </RateContainer>
         </Header>
         <Content>
           <AnimatedImage

@@ -95,6 +95,11 @@ export const USER_REVIEWS_AND_LIKE = gql`
         email
         image
       }
+      food {
+        _id
+        name
+        imgUrl
+      }
     }
     like(uid: $uid) {
       _id

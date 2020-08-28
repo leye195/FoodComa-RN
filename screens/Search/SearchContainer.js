@@ -16,7 +16,7 @@ const SearchContainer = ({ navigation }) => {
     setKeyword(text);
   };
   const handleSubmit = () => {
-    searchFood({ variables: { keyword } });
+    searchFood({ variables: { keyword: keyword.trim() } });
   };
   const refetchingData = () => {
     handleSubmit();

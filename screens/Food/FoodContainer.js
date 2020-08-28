@@ -6,6 +6,8 @@ import { GET_FOODS, GET_CATEGORIES } from "../../graqhql/query";
 const FoodContainer = () => {
   const [selected, setSelected] = useState({ idx: 0, type: "all" });
   const [foods, setFoods] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [value, setValue] = useState(5);
   const {
     loading: categoryLoading,
     error: categoryError,
@@ -21,6 +23,13 @@ const FoodContainer = () => {
     getFoods({ variables: { typeName: type } });
     setSelected({ idx, type });
   };
+  const onValueChange = (v) => {
+    const rate = parseFloat(v.toFixed(1), 10);
+    setValue(rate);
+  };
+  const toggleFilter = () => {
+    setIsVisible((cur) => !cur);
+  };
   useLayoutEffect(() => {
     setFoods(foodsData && foodsData.foods);
   }, [foodsData]);
@@ -32,6 +41,10 @@ const FoodContainer = () => {
       foods={foods || []}
       category={(categoryData && categoryData.categories) || []}
       getData={getFoods}
+      value={value}
+      isVisible={isVisible}
+      toggleFilter={toggleFilter}
+      onValueChange={onValueChange}
     />
   );
 };

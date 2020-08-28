@@ -16,20 +16,6 @@ const Title = styled.Text`
   color: black;
 `;
 const IconButton = ({ children, title, id, name, onPressButton }) => {
-  const navigation = useNavigation();
-  /*const handlePress = () => {
-    if (title === "평가 하기") {
-      //리뷰 창으로 이동
-      navigation.navigate("Review", {
-        id,
-        name,
-      });
-    } else {
-      //좋아요
-      console.log("liked");
-      onPressLike();
-    }
-  };*/
   return (
     <ButtonContainer>
       <Button onPress={onPressButton}>
