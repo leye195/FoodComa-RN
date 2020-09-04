@@ -32,6 +32,12 @@ export const SUBMIT_REVIEW = gql`
   }
 `;
 
+export const DELETE_REVIEW = gql`
+  mutation deleteReview($fid: ID!) {
+    deleteReview(fid: $fid)
+  }
+`;
+
 export const LIKE_FOOD = gql`
   mutation likeFood($uid: ID!, $fid: ID!) {
     likeFood(uid: $uid, fid: $fid)

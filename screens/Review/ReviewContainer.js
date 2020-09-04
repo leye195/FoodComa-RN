@@ -6,6 +6,8 @@ import { useMutation } from "@apollo/react-hooks";
 import { SUBMIT_REVIEW } from "../../graqhql/mutation";
 import { useDispatch } from "react-redux";
 import { checkReview } from "../../reducers/user";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 
 const ReviewContainer = ({ route: { params } }) => {
   const navigation = useNavigation();
@@ -38,6 +40,33 @@ const ReviewContainer = ({ route: { params } }) => {
       }
     });
   };
+  const pickImages = async () => {
+    try {
+      const { status } = await Permissions.askAsync(
+        Permissions.CAMERA_ROLL,
+        Permissions.CAMERA
+      );
+      if (status === "granted") {
+        let {
+          cancelled,
+          uri: pickedUri,
+        } = await ImagePicker.launchImageLibraryAsync({
+          allsowsMultipleSelection: true,
+        });
+        if (!cancelled) {
+          console.log(pickedUri);
+          /*Platform.OS === "ios"
+              ? pickedUri.replace("file://", "")
+              : pickedUri;*/
+
+          //setImage(uri);
+          //uploadFile(uri);
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <ReviewPresenter
       foodId={foodId}
@@ -47,6 +76,7 @@ const ReviewContainer = ({ route: { params } }) => {
       onStarRatingPress={onStarRatingPress}
       onChangeReview={onChangeReview}
       onSubmitReview={onSubmitReview}
+      pickImages={pickImages}
     />
   );
 };

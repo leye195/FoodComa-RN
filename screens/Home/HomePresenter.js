@@ -1,8 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { TouchableOpacity } from "react-native";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
-import { DARK_YELLOW, GREY_COLOR } from "../../constants/color";
+import { GREY_COLOR } from "../../constants/color";
 import Section from "../../components/Section";
 import HorizontalScroll from "../../components/HorizontalScroll";
 import Scroll from "../../components/Scroll";
@@ -47,15 +46,22 @@ const Title = styled.Text`
   text-align: center;
 `;
 
-const HomePresenter = ({ moveToDetail, loading, data, refetch }) => {
+const HomePresenter = ({
+  moveToDetail,
+  loading,
+  data,
+  refetch,
+  onScroll,
+  posY,
+}) => {
   return loading ? (
     <Container type={"loading"}>
       <Bounce size={45} />
     </Container>
   ) : (
     <>
-      <Header text={"FoodComa"} />
-      <Scroll getData={refetch}>
+      <Header text={"FoodComa"} type={"animation"} posY={posY} />
+      <Scroll getData={refetch} onScroll={onScroll}>
         <Container>
           <ImageSection></ImageSection>
           <Section title={"맛있는 한식?"}>

@@ -88,7 +88,7 @@ const ProfilePresenter = ({
   //console.lot(loading);
   return (
     <Container>
-      <Header text={"내 프로필"}>
+      <Header text={"내 프로필"} s>
         <MoreButton toggleModal={toggleModal} />
       </Header>
       <UserSection>
@@ -101,7 +101,7 @@ const ProfilePresenter = ({
       <ButtonContainer>
         <CategoryWrapper selected={selected === 0}>
           <TouchableOpacity onPress={() => handleSelect(0)}>
-            <Category selected={selected === 0}>리뷰</Category>
+            <Category selected={selected === 0}>MY 리뷰</Category>
           </TouchableOpacity>
         </CategoryWrapper>
         <CategoryWrapper

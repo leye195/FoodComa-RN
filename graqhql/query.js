@@ -104,7 +104,12 @@ export const USER_REVIEWS_AND_LIKE = gql`
     like(uid: $uid) {
       _id
       name
+      type
       imgUrl
+      longitude
+      latitude
+      address
+      rate
       avg_rate
     }
   }

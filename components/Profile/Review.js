@@ -68,8 +68,10 @@ const Review = ({
     content,
     food,
   },
+  review,
+  toggleModal,
 }) => {
-  console.log(food);
+  //console.log(food);
   return (
     <>
       <Container>
@@ -82,7 +84,7 @@ const Review = ({
             <Rate rate={rate} />
           </RateContainer>
           <EditContainer>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => toggleModal(true, review)}>
               <FontAwesome5
                 name={"edit"}
                 size={20}

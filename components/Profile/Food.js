@@ -49,6 +49,7 @@ const Food = ({
       useNativeDriver: true,
     }).start();
   };
+  console.log(longitude, latitude);
   return (
     <TouchableOpacity
       onPress={() =>

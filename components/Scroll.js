@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, RefreshControl } from "react-native";
-//import { height } from "../constants/layout";
-const Scroll = ({ children, getData }) => {
+const Scroll = ({ children, getData, onScroll = null }) => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     try {
@@ -13,8 +12,12 @@ const Scroll = ({ children, getData }) => {
       setRefreshing(false);
     }
   };
+
   return (
     <ScrollView
+      onScroll={onScroll !== null && onScroll}
+      //onScroll={onScroll !== null && onScroll}
+      scrollEventThrottle={16}
       refreshControl={
         <RefreshControl
           refreshing={refreshing}
