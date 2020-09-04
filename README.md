@@ -4,6 +4,15 @@ React Native with Apollo, (Expo 활용)
 
 - Expo를 활용해 만들어보는 FoodComa
 
+### Stack
+
+[x] React-Native (expo)
+[x] Styled-Component
+[x] Redux
+[x] Apollo (Apollo-Boost)
+[x] graphql
+[x] firebase(firebase-storage 이미지 저장으로 활용)
+
 ### Screens
 
 - [x] SiguUp/SignIn
